@@ -2507,9 +2507,36 @@ code {
         grid-template-columns: 1fr 1fr;
     }
 
+    .modal-overlay {
+        padding: var(--space-md);
+    }
+
     .modal {
-        padding: var(--space-lg);
-        max-height: 90vh;
+        padding: var(--space-xl) var(--space-md) var(--space-md);
+        max-height: 95vh;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+    
+    .modal-close {
+        top: var(--space-sm);
+        right: var(--space-sm);
+    }
+
+    .modal-header {
+        margin-bottom: var(--space-md);
+    }
+
+    .modal-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+
+    .modal-title {
+        font-size: 1.3rem;
     }
 
     .tool-grid {
