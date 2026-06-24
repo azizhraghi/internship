@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Architecture — Research Lab Platform</title>
+    <meta name="description" content="Interactive architecture reference for the AI agent system powering the research laboratory platform.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated background particles -->
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">
+                <span class="nav-logo-icon">⬡</span>
+                <span>Agent Architecture</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#quickstart" class="nav-link">Quick Start</a>
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#agents" class="nav-link">Agents</a>
+                <a href="#communication" class="nav-link">Communication</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#workflows" class="nav-link">Workflows</a>
+                <a href="#shared" class="nav-link">Shared Layer</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Architecture Reference v1.0</div>
+            <h1 class="hero-title">
+                <span class="hero-title-line">Multi-Agent</span>
+                <span class="hero-title-line gradient-text">Intelligence System</span>
+            </h1>
+            <p class="hero-subtitle">
+                7 autonomous AI agents orchestrated through an event-driven architecture,
+                powered by Mistral AI, and governed by human-in-the-loop policies.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">7</span>
+                    <span class="hero-stat-label">Agents</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">24</span>
+                    <span class="hero-stat-label">Event Types</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">42</span>
+                    <span class="hero-stat-label">Tools</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">∞</span>
+                    <span class="hero-stat-label">Workflows</span>
+                </div>
+            </div>
+            <a href="#overview" class="hero-cta">
+                Explore Architecture
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14m0 0l5-5m-5 5l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- [REMOVED FOR ARCHITECTURE FOCUS] Portal, Projects, Digital Twins, Stack sections preserved in git history -->
+
+    <!-- Quick Start -->
+    <section class="section" id="quickstart">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Quick Start</span>
+                <h2 class="section-title">How to Read This Reference</h2>
+                <p class="section-subtitle">New to the project? Follow these 3 steps to get oriented in under 5 minutes.</p>
+            </div>
+
+            <div class="quickstart-grid">
+                <div class="quickstart-card">
+                    <div class="quickstart-number">1</div>
+                    <h3>Understand the Layers</h3>
+                    <p>Start with the <a href="#overview">Architecture Overview</a> to see how the 5 system layers stack up — from REST API at the top to Security at the bottom.</p>
+                    <div class="quickstart-hint">💡 The Agent layer is where all the intelligence lives</div>
+                </div>
+                <div class="quickstart-card">
+                    <div class="quickstart-number">2</div>
+                    <h3>Find Your Agent</h3>
+                    <p>Go to the <a href="#agents">Agent Registry</a> and click your agent's card. Each modal has 6 tabs: Overview, Tools, Events, Dependencies, Models, and API.</p>
+                    <div class="quickstart-hint">💡 The Dependencies tab shows exactly who you integrate with</div>
+                </div>
+                <div class="quickstart-card">
+                    <div class="quickstart-number">3</div>
+                    <h3>Trace the Workflows</h3>
+                    <p>Check the <a href="#workflows">Workflows</a> to see how your agent participates in real end-to-end scenarios with other agents.</p>
+                    <div class="quickstart-hint">💡 The Event Catalog is your API contract reference</div>
+                </div>
+            </div>
+
+            <div class="quickstart-categories">
+                <div class="quickstart-cat" style="--cat-color: #6c5ce7">
+                    <span class="quickstart-cat-dot" style="background: #6c5ce7"></span>
+                    <strong>Data Agents</strong>
+                    <span>Collect, sync, and enrich data from external sources</span>
+                </div>
+                <div class="quickstart-cat" style="--cat-color: #e17055">
+                    <span class="quickstart-cat-dot" style="background: #e17055"></span>
+                    <strong>Compute Agents</strong>
+                    <span>Run simulations, optimize, and generate recommendations</span>
+                </div>
+                <div class="quickstart-cat" style="--cat-color: #fd79a8">
+                    <span class="quickstart-cat-dot" style="background: #fd79a8"></span>
+                    <strong>Governance Agents</strong>
+                    <span>Track operations, validate quality, and coordinate everything</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Overview -->
+    <section class="section" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">System Overview</span>
+                <h2 class="section-title">Architecture Layers</h2>
+                <p class="section-subtitle">The system is structured in 5 horizontal layers, with agents sitting at the orchestration layer and communicating via an event bus.</p>
+                <div class="context-hint">💡 <strong>Why this matters:</strong> Every component you build fits into exactly one layer. This keeps boundaries clean and prevents spaghetti dependencies.</div>
+            </div>
+
+            <div class="layers-diagram">
+                <div class="layer layer-experience" data-layer="experience">
+                    <div class="layer-label">Experience Layer</div>
+                    <div class="layer-items">
+                        <span class="layer-chip">REST API</span>
+                        <span class="layer-chip">WebSocket</span>
+                        <span class="layer-chip">Swagger UI</span>
+                        <span class="layer-chip">Admin Panel</span>
+                    </div>
+                    <div class="layer-desc">FastAPI endpoints exposing agent capabilities to front-end and external consumers</div>
+                </div>
+                <div class="layer-connector">
+                    <svg width="40" height="30"><path d="M20 0 L20 30" stroke="var(--accent-primary)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="layer layer-agents" data-layer="agents">
+                    <div class="layer-label">Agent Orchestration Layer</div>
+                    <div class="layer-items">
+                        <span class="layer-chip chip-agent">🔍 Veille</span>
+                        <span class="layer-chip chip-agent">📊 Bibliométrie</span>
+                        <span class="layer-chip chip-agent">🧪 Simulation</span>
+                        <span class="layer-chip chip-agent">⚡ Optimisation</span>
+                        <span class="layer-chip chip-agent">📋 MIS</span>
+                        <span class="layer-chip chip-agent">✅ Qualité</span>
+                        <span class="layer-chip chip-agent">🎯 Orchestrateur</span>
+                    </div>
+                    <div class="layer-desc">Autonomous agents with specialized tools, connected via Redis Streams event bus</div>
+                </div>
+                <div class="layer-connector">
+                    <svg width="40" height="30"><path d="M20 0 L20 30" stroke="var(--accent-secondary)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="layer layer-services" data-layer="services">
+                    <div class="layer-label">Shared Services Layer</div>
+                    <div class="layer-items">
+                        <span class="layer-chip">Mistral AI Client</span>
+                        <span class="layer-chip">PDF Generator</span>
+                        <span class="layer-chip">Email Service</span>
+                        <span class="layer-chip">File Storage</span>
+                    </div>
+                    <div class="layer-desc">Common capabilities consumed by multiple agents</div>
+                </div>
+                <div class="layer-connector">
+                    <svg width="40" height="30"><path d="M20 0 L20 30" stroke="var(--accent-tertiary)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="layer layer-data" data-layer="data">
+                    <div class="layer-label">Data & Integration Layer</div>
+                    <div class="layer-items">
+                        <span class="layer-chip">PostgreSQL + pgvector</span>
+                        <span class="layer-chip">Redis</span>
+                        <span class="layer-chip">Celery</span>
+                        <span class="layer-chip">ORCID API</span>
+                        <span class="layer-chip">Scopus API</span>
+                        <span class="layer-chip">CrossRef</span>
+                    </div>
+                    <div class="layer-desc">Persistent storage, caching, task queues, and external API integrations</div>
+                </div>
+                <div class="layer-connector">
+                    <svg width="40" height="30"><path d="M20 0 L20 30" stroke="var(--accent-quaternary)" stroke-width="2" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="layer layer-security" data-layer="security">
+                    <div class="layer-label">Security & Compliance Layer</div>
+                    <div class="layer-items">
+                        <span class="layer-chip">JWT / OAuth2</span>
+                        <span class="layer-chip">RBAC</span>
+                        <span class="layer-chip">Audit Logs</span>
+                        <span class="layer-chip">RGPD Engine</span>
+                        <span class="layer-chip">TLS/SSL</span>
+                    </div>
+                    <div class="layer-desc">Cross-cutting security, authentication, authorization, and compliance enforcement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agents Detail -->
+    <section class="section section-dark" id="agents">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Agent Registry</span>
+                <h2 class="section-title">Meet the Agents</h2>
+                <p class="section-subtitle">Click on any agent to explore its tools, events, responsibilities, and inter-agent dependencies.</p>
+                <div class="context-hint">💡 <strong>Why this matters:</strong> Each agent is a standalone microservice. You can develop, test, and deploy yours independently — as long as you respect the event contracts.</div>
+            </div>
+
+            <!-- Agent filter tabs -->
+            <div class="agent-filters">
+                <button class="agent-filter active" data-filter="all">All Agents</button>
+                <button class="agent-filter" data-filter="data">Data Agents</button>
+                <button class="agent-filter" data-filter="compute">Compute Agents</button>
+                <button class="agent-filter" data-filter="governance">Governance Agents</button>
+            </div>
+
+            <!-- Agent cards grid -->
+            <div class="agents-grid" id="agentsGrid">
+                <!-- Cards are injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Detail Modal -->
+    <div class="modal-overlay" id="agentModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <div class="modal-header" id="modalHeader">
+                <span class="modal-icon" id="modalIcon"></span>
+                <div>
+                    <h3 class="modal-title" id="modalTitle"></h3>
+                    <p class="modal-subtitle" id="modalSubtitle"></p>
+                </div>
+            </div>
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="overview">Overview</button>
+                <button class="modal-tab" data-tab="tools">Tools</button>
+                <button class="modal-tab" data-tab="events">Events</button>
+                <button class="modal-tab" data-tab="dependencies">Dependencies</button>
+                <button class="modal-tab" data-tab="models">Data Models</button>
+                <button class="modal-tab" data-tab="api">API</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Communication Patterns -->
+    <section class="section" id="communication">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Communication</span>
+                <h2 class="section-title">How Agents Talk</h2>
+                <p class="section-subtitle">Agents never call each other directly. All communication flows through the Redis Streams event bus following a publish-subscribe pattern.</p>
+            </div>
+
+            <div class="comm-patterns">
+                <div class="comm-pattern" data-pattern="event-driven">
+                    <div class="comm-pattern-header">
+                        <div class="comm-pattern-icon">📡</div>
+                        <h3>Event-Driven Messaging</h3>
+                    </div>
+                    <div class="comm-pattern-body">
+                        <p>Agents emit events to named streams. Other agents subscribe to streams they care about. The Orchestrateur monitors all streams.</p>
+                        <div class="comm-flow">
+                            <div class="comm-flow-step">
+                                <span class="comm-node node-agent">Veille</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-bus">article.discovered</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-agent">Bibliométrie</span>
+                            </div>
+                            <div class="comm-flow-desc">When Veille finds a new article by a lab researcher, Bibliométrie automatically updates their publication list.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comm-pattern" data-pattern="request-reply">
+                    <div class="comm-pattern-header">
+                        <div class="comm-pattern-icon">🔄</div>
+                        <h3>Request-Reply (via Events)</h3>
+                    </div>
+                    <div class="comm-pattern-body">
+                        <p>When an agent needs a result from another, it emits a request event and listens for the reply event with a correlation ID.</p>
+                        <div class="comm-flow">
+                            <div class="comm-flow-step">
+                                <span class="comm-node node-agent">Optimisation</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-bus">simulation.request</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-agent">Simulation</span>
+                            </div>
+                            <div class="comm-flow-step">
+                                <span class="comm-node node-agent">Simulation</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-bus">simulation.result</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-agent">Optimisation</span>
+                            </div>
+                            <div class="comm-flow-desc">Optimisation requests a simulation run and waits for results before computing recommendations.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comm-pattern" data-pattern="broadcast">
+                    <div class="comm-pattern-header">
+                        <div class="comm-pattern-icon">📢</div>
+                        <h3>Broadcast (Fan-out)</h3>
+                    </div>
+                    <div class="comm-pattern-body">
+                        <p>Some events are consumed by multiple agents simultaneously. The event bus delivers to all subscribers.</p>
+                        <div class="comm-flow">
+                            <div class="comm-flow-step">
+                                <span class="comm-node node-agent">MIS</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-bus">project.updated</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-multi">Qualité + Orchestrateur + Bibliométrie</span>
+                            </div>
+                            <div class="comm-flow-desc">When a project is updated, Qualité checks consistency, Orchestrateur logs the change, and Bibliométrie may update related publications.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comm-pattern" data-pattern="human-loop">
+                    <div class="comm-pattern-header">
+                        <div class="comm-pattern-icon">👤</div>
+                        <h3>Human-in-the-Loop</h3>
+                    </div>
+                    <div class="comm-pattern-body">
+                        <p>Sensitive actions go to a review queue. The agent proposes, a human approves/rejects, then the agent executes or aborts.</p>
+                        <div class="comm-flow">
+                            <div class="comm-flow-step">
+                                <span class="comm-node node-agent">Any Agent</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-bus">action.proposed</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-human">Review Queue</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-bus">action.approved</span>
+                                <span class="comm-arrow">→</span>
+                                <span class="comm-node node-agent">Agent</span>
+                            </div>
+                            <div class="comm-flow-desc">Publishing a policy brief, deleting data, or modifying budgets always requires human approval.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interaction Matrix -->
+            <div class="dependency-map-section">
+                <h3 class="subsection-title">Agent Interaction Matrix</h3>
+                <p class="subsection-desc">Who sends events to whom — at a glance. Each cell shows the number of event types flowing between agents.</p>
+                <div class="matrix-container" id="interactionMatrix">
+                    <!-- Built by JS -->
+                </div>
+            </div>
+
+            <!-- Error Handling -->
+            <div class="dependency-map-section">
+                <h3 class="subsection-title">Error Handling &amp; Recovery</h3>
+                <p class="subsection-desc">What happens when things go wrong — because they will.</p>
+                <div class="error-patterns">
+                    <div class="error-pattern-card">
+                        <div class="error-icon">🔄</div>
+                        <h4>Automatic Retry</h4>
+                        <p>Failed event processing retries with exponential backoff (1s → 2s → 4s → 8s). Max 5 attempts before dead letter.</p>
+                    </div>
+                    <div class="error-pattern-card">
+                        <div class="error-icon">📬</div>
+                        <h4>Dead Letter Queue</h4>
+                        <p>Events that exhaust retries go to a DLQ. The Orchestrateur monitors it and escalates to admins.</p>
+                    </div>
+                    <div class="error-pattern-card">
+                        <div class="error-icon">💓</div>
+                        <h4>Heartbeat &amp; Health</h4>
+                        <p>Every agent sends heartbeats every 30s. If 3 consecutive heartbeats are missed, Orchestrateur marks the agent as <code>degraded</code>.</p>
+                    </div>
+                    <div class="error-pattern-card">
+                        <div class="error-icon">🔀</div>
+                        <h4>Graceful Degradation</h4>
+                        <p>If Veille is down, Bibliométrie still runs from cached data. If Simulation fails mid-run, the scenario state is preserved for restart.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dependency Map -->
+            <div class="dependency-map-section">
+                <h3 class="subsection-title">Agent Dependency Map</h3>
+                <p class="subsection-desc">Hover on any agent to highlight its connections. Click to open details. Dashed lines show Orchestrateur governance.</p>
+                <div class="dep-map-legend">
+                    <span class="legend-item"><span class="legend-line legend-solid"></span> Event data flow</span>
+                    <span class="legend-item"><span class="legend-line legend-dashed"></span> Orchestrateur governance</span>
+                    <span class="legend-item">🖱️ Hover to highlight · Click to inspect</span>
+                </div>
+                <div class="dependency-map" id="dependencyMap">
+                    <canvas id="depCanvas"></canvas>
+                    <div class="dep-nodes" id="depNodes">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Catalog -->
+    <section class="section section-dark" id="events">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Event Catalog</span>
+                <h2 class="section-title">Event Types & Contracts</h2>
+                <p class="section-subtitle">Every event has a typed Pydantic schema. Here's the full catalog of events flowing through the system.</p>
+            </div>
+
+            <div class="event-search">
+                <input type="text" class="event-search-input" id="eventSearch" placeholder="Search events... (e.g. article, project, simulation)">
+            </div>
+
+            <div class="events-table-wrap">
+                <table class="events-table" id="eventsTable">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Producer</th>
+                            <th>Consumer(s)</th>
+                            <th>Payload</th>
+                            <th>Trigger</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTableBody">
+                        <!-- Injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflows -->
+    <section class="section" id="workflows">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Workflows</span>
+                <h2 class="section-title">End-to-End Scenarios</h2>
+                <p class="section-subtitle">See how agents collaborate to accomplish complex multi-step workflows.</p>
+            </div>
+
+            <div class="workflow-tabs">
+                <button class="workflow-tab active" data-workflow="discovery">Paper Discovery → CV Update</button>
+                <button class="workflow-tab" data-workflow="simulation">Simulation → Optimization</button>
+                <button class="workflow-tab" data-workflow="compliance">Compliance Audit</button>
+                <button class="workflow-tab" data-workflow="report">Auto Report Generation</button>
+            </div>
+
+            <div class="workflow-content" id="workflowContent">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Framework -->
+    <section class="section section-dark" id="shared">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Shared Framework</span>
+                <h2 class="section-title">Common Infrastructure</h2>
+                <p class="section-subtitle">Every agent inherits from <code>BaseAgent</code> and uses these shared services.</p>
+            </div>
+
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <div class="framework-card-icon">🧬</div>
+                    <h3>BaseAgent</h3>
+                    <p>Abstract base class providing lifecycle hooks, event handling, health reporting, and audit logging.</p>
+                    <div class="code-block">
+                        <pre><code><span class="kw">class</span> <span class="cls">BaseAgent</span>(<span class="cls">ABC</span>):
+    name: <span class="typ">str</span>
+    version: <span class="typ">str</span>
+    permissions: <span class="typ">list</span>[<span class="typ">str</span>]
+    requires_approval: <span class="typ">list</span>[<span class="typ">str</span>]
+
+    <span class="kw">async def</span> <span class="fn">start</span>(self): ...
+    <span class="kw">async def</span> <span class="fn">stop</span>(self): ...
+    <span class="kw">async def</span> <span class="fn">handle_event</span>(self, event): ...
+    <span class="kw">async def</span> <span class="fn">emit_event</span>(self, stream, data): ...
+    <span class="kw">async def</span> <span class="fn">propose_action</span>(self, action): ...
+    <span class="kw">async def</span> <span class="fn">log_audit</span>(self, entry): ...
+    <span class="kw">async def</span> <span class="fn">heartbeat</span>(self): ...</code></pre>
+                    </div>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-card-icon">📡</div>
+                    <h3>Event Bus</h3>
+                    <p>Redis Streams wrapper with consumer groups, acknowledgments, and dead-letter handling.</p>
+                    <div class="code-block">
+                        <pre><code><span class="kw">class</span> <span class="cls">EventBus</span>:
+    <span class="kw">async def</span> <span class="fn">publish</span>(
+        self, stream: <span class="typ">str</span>,
+        event: <span class="cls">Event</span>
+    ) -> <span class="typ">str</span>:  <span class="cmt"># returns event ID</span>
+
+    <span class="kw">async def</span> <span class="fn">subscribe</span>(
+        self, streams: <span class="typ">list</span>[<span class="typ">str</span>],
+        group: <span class="typ">str</span>,
+        handler: <span class="cls">Callable</span>
+    ): ...
+
+    <span class="kw">async def</span> <span class="fn">ack</span>(self, stream, group, id): ...
+    <span class="kw">async def</span> <span class="fn">get_pending</span>(self, stream, group): ...</code></pre>
+                    </div>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-card-icon">🤖</div>
+                    <h3>Mistral AI Client</h3>
+                    <p>Unified LLM client with model routing, retry logic, rate limiting, and response caching.</p>
+                    <div class="code-block">
+                        <pre><code><span class="kw">class</span> <span class="cls">LLMClient</span>:
+    <span class="kw">async def</span> <span class="fn">complete</span>(
+        self,
+        prompt: <span class="typ">str</span>,
+        model: <span class="typ">str</span> = <span class="str">"mistral-small"</span>,
+        temperature: <span class="typ">float</span> = <span class="num">0.3</span>,
+        response_format: <span class="typ">type</span> = <span class="val">None</span>,
+    ) -> <span class="typ">str</span> | <span class="cls">BaseModel</span>: ...
+
+    <span class="kw">async def</span> <span class="fn">embed</span>(
+        self, texts: <span class="typ">list</span>[<span class="typ">str</span>]
+    ) -> <span class="typ">list</span>[<span class="typ">list</span>[<span class="typ">float</span>]]: ...
+
+    <span class="cmt"># Automatic model routing:</span>
+    <span class="cmt"># - mistral-small: tagging, classification</span>
+    <span class="cmt"># - mistral-large: summarization, reasoning</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-card-icon">🗃️</div>
+                    <h3>Database</h3>
+                    <p>Async SQLAlchemy with PostgreSQL + pgvector. Shared session management, migrations via Alembic.</p>
+                    <div class="code-block">
+                        <pre><code><span class="cmt"># Async session factory</span>
+engine = create_async_engine(DATABASE_URL)
+AsyncSession = async_sessionmaker(engine)
+
+<span class="cmt"># All models inherit from:</span>
+<span class="kw">class</span> <span class="cls">Base</span>(<span class="cls">DeclarativeBase</span>):
+    id: Mapped[<span class="typ">UUID</span>]
+    created_at: Mapped[<span class="typ">datetime</span>]
+    updated_at: Mapped[<span class="typ">datetime</span>]
+
+<span class="cmt"># pgvector for embeddings:</span>
+embedding = mapped_column(<span class="cls">Vector</span>(<span class="num">1024</span>))</code></pre>
+                    </div>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-card-icon">📋</div>
+                    <h3>Schemas</h3>
+                    <p>Pydantic v2 base schemas for events, actions, audit entries, and API responses.</p>
+                    <div class="code-block">
+                        <pre><code><span class="kw">class</span> <span class="cls">Event</span>(<span class="cls">BaseModel</span>):
+    id: <span class="typ">str</span> = Field(default_factory=uuid4)
+    type: <span class="typ">str</span>
+    source_agent: <span class="typ">str</span>
+    timestamp: <span class="typ">datetime</span>
+    correlation_id: <span class="typ">str</span> | <span class="val">None</span>
+    payload: <span class="typ">dict</span>
+
+<span class="kw">class</span> <span class="cls">AgentAction</span>(<span class="cls">BaseModel</span>):
+    agent: <span class="typ">str</span>
+    action_type: <span class="typ">str</span>
+    requires_approval: <span class="typ">bool</span>
+    payload: <span class="typ">dict</span>
+    status: <span class="typ">Literal</span>[<span class="str">"proposed"</span>,<span class="str">"approved"</span>,<span class="str">"rejected"</span>,<span class="str">"executed"</span>]</code></pre>
+                    </div>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-card-icon">🔒</div>
+                    <h3>Security</h3>
+                    <p>JWT token validation, RBAC enforcement, rate limiting, and request signing for inter-agent trust.</p>
+                    <div class="code-block">
+                        <pre><code><span class="cmt"># Role-Based Access Control</span>
+<span class="kw">class</span> <span class="cls">Permission</span>(<span class="cls">Enum</span>):
+    READ_ARTICLES = <span class="str">"veille:read"</span>
+    MANAGE_PROJECTS = <span class="str">"mis:manage"</span>
+    APPROVE_ACTIONS = <span class="str">"orchestrateur:approve"</span>
+    ADMIN = <span class="str">"system:admin"</span>
+
+<span class="cmt"># Dependency injection guard</span>
+<span class="kw">def</span> <span class="fn">require_permission</span>(perm: <span class="cls">Permission</span>):
+    <span class="kw">async def</span> <span class="fn">guard</span>(token=Depends(get_token)):
+        <span class="kw">if</span> perm <span class="kw">not in</span> token.permissions:
+            <span class="kw">raise</span> HTTPException(<span class="num">403</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [REMOVED FOR ARCHITECTURE FOCUS] Governance and Team sections preserved in git history -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo-icon">⬡</span>
+                    <span>Research Lab — Agent Architecture</span>
+                </div>
+                <p class="footer-note">Internal team reference document. Last updated: <span id="lastUpdated"></span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
