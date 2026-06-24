@@ -2467,13 +2467,30 @@ code {
 
     .hero {
         flex-direction: column;
-        padding-top: var(--space-4xl);
+        padding-top: 120px;
+        padding-bottom: var(--space-2xl);
         text-align: center;
-        gap: var(--space-xl);
+        gap: var(--space-lg);
     }
     
     .hero-content {
-        margin-top: var(--space-2xl);
+        margin-top: 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-image {
+        transform: none;
+    }
+
+    .hero-image:hover {
+        transform: none;
+    }
+
+    .section {
+        padding: var(--space-2xl) 0;
     }
 
     .hero-stats {
