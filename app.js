@@ -523,7 +523,7 @@ function initDependencyMap() {
         node.className = "dep-node";
         node.style.left = (pos.x - 60) + "px";
         node.style.top = (pos.y - 18) + "px";
-        node.style.background = pos.agent.color + "20";
+        node.style.background = pos.agent.color + "12";
         node.style.borderColor = pos.agent.color;
         node.style.color = pos.agent.color;
         node.textContent = pos.agent.icon + " " + pos.agent.name.replace("Agent ", "");
@@ -590,7 +590,7 @@ function initDependencyMap() {
             ctx.quadraticCurveTo(cpX, cpY, to.x, to.y);
 
             const fromAgent = AGENTS.find(a => a.id === conn.from);
-            const alpha = isActive ? 0.6 : 0.08;
+            const alpha = isActive ? 0.8 : 0.15;
             ctx.strokeStyle = (fromAgent ? fromAgent.color : "#6c5ce7") +
                 Math.round(alpha * 255).toString(16).padStart(2, "0");
             ctx.lineWidth = isHighlighted ? 2.5 : 1.2;
@@ -636,7 +636,7 @@ function initDependencyMap() {
                 ctx.setLineDash([4, 6]);
                 ctx.moveTo(orchPos.x, orchPos.y);
                 ctx.lineTo(pos.x, pos.y);
-                const alpha = isActive ? 0.2 : 0.04;
+                const alpha = isActive ? 0.4 : 0.1;
                 ctx.strokeStyle = orchAgent.color +
                     Math.round(alpha * 255).toString(16).padStart(2, "0");
                 ctx.lineWidth = isHighlighted ? 1.5 : 0.8;
