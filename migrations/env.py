@@ -16,6 +16,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from shared.config import settings
 from shared.database import Base
 
+# Import all models here so Alembic can discover them
+from agents.veille import models as veille_models
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

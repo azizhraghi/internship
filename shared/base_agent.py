@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import asyncio
 from shared.schemas import Event, AgentAction, ActionResult, AuditEntry
 from shared.event_bus import event_bus
